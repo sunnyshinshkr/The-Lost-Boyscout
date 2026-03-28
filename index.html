@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lost Boyscout | Texas Home-Baked Goods</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --country-red: #b91c1c;
+            --cream: #fffdfa;
+        }
+        
+        body { 
+            font-family: 'Kalam', cursive;
+            background-color: #f3f4f6;
+            background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+            color: #374151;
+        }
+
+        .gingham-header {
+            background-color: white;
+            background-image: 
+                linear-gradient(90deg, rgba(185, 28, 28, .15) 50%, transparent 50%),
+                linear-gradient(rgba(185, 28, 28, .15) 50%, transparent 50%);
+            background-size: 40px 40px;
+            border-bottom: 8px solid var(--country-red);
+        }
+
+        .homestead-card {
+            background: var(--cream);
+            border: 2px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 1rem;
+        }
+
+        .brand-logo-text {
+            font-family: 'Special Elite', cursive;
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+        }
+
+        .handwritten { font-family: 'Kalam', cursive; }
+        .serif-bold { font-family: 'Playfair Display', serif; }
+
+        .price-tag {
+            background: var(--country-red);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 999px;
+            font-size: 1.2rem;
+            transform: rotate(-2deg);
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+        }
+
+        .submit-btn {
+            background: var(--country-red);
+            transition: all 0.2s;
+        }
+        .submit-btn:hover {
+            background: #991b1b;
+            transform: translateY(-2px);
+        }
+
+        input[type=number] {
+            border: 2px solid #d1d5db;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            font-weight: bold;
+            color: var(--country-red);
+        }
+
+        #success-screen {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="pb-20">
+
+    <header class="gingham-header py-8 px-6 shadow-md mb-8">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="bg-white/90 p-6 rounded-xl shadow-sm border-2 border-red-800/20 text-center md:text-left">
+                <div class="brand-logo-text text-3xl md:text-4xl text-stone-900 mb-1">THE LOST</div>
+                <div class="brand-logo-text text-4xl md:text-5xl text-red-800 font-bold">BOYSCOUT</div>
+                <div class="text-xs uppercase tracking-[0.3em] font-bold text-stone-500 mt-2 border-t border-stone-300 pt-1">Baked Goods</div>
+            </div>
+            
+            <div class="text-center md:text-right">
+                <h1 class="serif-bold text-3xl md:text-4xl text-red-800 italic">Fresh From the Texas Hearth</h1>
+                <p class="handwritten text-xl text-stone-600">Home-baked provisions for your next trail</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4">
+        <div id="form-container">
+            <div class="text-center mb-12">
+                <p class="text-2xl handwritten text-stone-600">"Baked with love, butter, and a whole lot of heart."</p>
+            </div>
+
+            <!-- Formspree ID mnjojwby 반영됨 -->
+            <form id="orderForm" action="https://formspree.io/f/mnjojwby" method="POST" class="space-y-8">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="homestead-card p-6 text-center flex flex-col items-center">
+                        <div class="text-5xl mb-4">🍪</div>
+                        <h3 class="serif-bold text-xl mb-1">Jumbo Choc Chip</h3>
+                        <p class="text-sm text-stone-500 mb-4 h-12">Big enough for a cowboy's appetite!</p>
+                        <div class="flex items-center gap-2 mt-auto">
+                            <label class="text-xs uppercase font-bold text-stone-400">Qty</label>
+                            <input type="number" min="0" value="0" name="jumbo_qty" class="flavor-qty w-20 text-center">
+                        </div>
+                    </div>
+
+                    <div class="homestead-card p-6 text-center flex flex-col items-center">
+                        <div class="text-5xl mb-4">🍵</div>
+                        <h3 class="serif-bold text-xl mb-1">Matcha White</h3>
+                        <p class="text-sm text-stone-500 mb-4 h-12">Sweet white chocolate meet earthy tea.</p>
+                        <div class="flex items-center gap-2 mt-auto">
+                            <label class="text-xs uppercase font-bold text-stone-400">Qty</label>
+                            <input type="number" min="0" value="0" name="matcha_qty" class="flavor-qty w-20 text-center">
+                        </div>
+                    </div>
+
+                    <div class="homestead-card p-6 text-center flex flex-col items-center">
+                        <div class="text-5xl mb-4">🌾</div>
+                        <h3 class="serif-bold text-xl mb-1">Oatmeal Raison</h3>
+                        <p class="text-sm text-stone-500 mb-4 h-12">Hearty oats for the trail ahead.</p>
+                        <div class="flex items-center gap-2 mt-auto">
+                            <label class="text-xs uppercase font-bold text-stone-400">Qty</label>
+                            <input type="number" min="0" value="0" name="oatmeal_qty" class="flavor-qty w-20 text-center">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="homestead-card p-8 border-t-4 border-red-700">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                        <div class="text-center md:text-left">
+                            <p class="serif-bold text-3xl text-red-800">Order Summary</p>
+                            <p class="handwritten text-xl">Total Cookies: <span id="totalQty" class="font-bold">0</span></p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div id="discountNotice" class="hidden text-red-600 font-bold italic animate-bounce">
+                                Box Discount Applied! 🤠
+                            </div>
+                            <div class="price-tag serif-bold">
+                                <span id="totalPrice">0.00</span> RMB
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="total_items" id="hiddenTotalQty">
+                    <input type="hidden" name="total_amount" id="hiddenTotalPrice">
+                </div>
+
+                <div class="homestead-card p-8 space-y-6">
+                    <h3 class="serif-bold text-2xl text-stone-800 border-b pb-2">Where should we send 'em?</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-1">
+                            <label class="text-sm font-bold text-stone-500">Your Name</label>
+                            <input type="text" name="name" required class="w-full p-3 border-2 border-stone-100 bg-stone-50 rounded-lg outline-none focus:border-red-400">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-sm font-bold text-stone-500">Phone Number</label>
+                            <input type="tel" name="phone" required class="w-full p-3 border-2 border-stone-100 bg-stone-50 rounded-lg outline-none focus:border-red-400">
+                        </div>
+                        <div class="md:col-span-2 space-y-1">
+                            <label class="text-sm font-bold text-stone-500">Delivery Address</label>
+                            <textarea name="address" required rows="2" class="w-full p-3 border-2 border-stone-100 bg-stone-50 rounded-lg outline-none focus:border-red-400 resize-none"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" id="submit-button" class="submit-btn w-full text-white serif-bold text-2xl py-6 rounded-2xl shadow-xl uppercase tracking-widest">
+                    Send My Cookies!
+                </button>
+                <p id="status-message" class="text-center text-stone-400 text-sm italic mt-4">Order will be dispatched to godlolita@gmail.com</p>
+            </form>
+        </div>
+
+        <div id="success-screen" class="text-center py-20 animate-fade-in">
+            <div class="homestead-card p-12 max-w-2xl mx-auto border-t-8 border-red-700">
+                <div class="text-7xl mb-6">🤠</div>
+                <h2 class="serif-bold text-4xl text-red-800 mb-4">Order Received, Partner!</h2>
+                <p class="text-2xl handwritten text-stone-600 mb-8">We've got your order and we're fire up the oven. Your fresh cookies will be hitting the trail soon!</p>
+                <div class="divider h-px bg-stone-200 my-8"></div>
+                <button onclick="location.reload()" class="text-red-700 font-bold uppercase tracking-widest border-b-2 border-red-700 hover:text-red-900">
+                    Place Another Order
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center mt-16 text-stone-400 py-8 border-t border-stone-200">
+        <p class="serif-bold">The Lost Boyscout Baked Goods</p>
+        <p class="text-xs mt-2 uppercase tracking-widest">&copy; 2024 Handmade in Texas Style</p>
+    </footer>
+
+    <script>
+        const inputs = document.querySelectorAll('.flavor-qty');
+        const totalPriceEl = document.getElementById('totalPrice');
+        const totalQtyEl = document.getElementById('totalQty');
+        const hiddenTotalQty = document.getElementById('hiddenTotalQty');
+        const hiddenTotalPrice = document.getElementById('hiddenTotalPrice');
+        const discountNotice = document.getElementById('discountNotice');
+        const orderForm = document.getElementById('orderForm');
+        const formContainer = document.getElementById('form-container');
+        const successScreen = document.getElementById('success-screen');
+        const submitBtn = document.getElementById('submit-button');
+        const statusMsg = document.getElementById('status-message');
+
+        function calculateTotal() {
+            let totalQty = 0;
+            inputs.forEach(input => {
+                totalQty += parseInt(input.value) || 0;
+            });
+            const boxes = Math.floor(totalQty / 6);
+            const individuals = totalQty % 6;
+            const totalCost = (boxes * 110) + (individuals * 20);
+            const formattedPrice = totalCost.toFixed(2);
+            totalQtyEl.textContent = totalQty;
+            totalPriceEl.textContent = formattedPrice;
+            hiddenTotalQty.value = totalQty;
+            hiddenTotalPrice.value = formattedPrice;
+            if (boxes > 0) {
+                discountNotice.classList.remove('hidden');
+            } else {
+                discountNotice.classList.add('hidden');
+            }
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('input', calculateTotal);
+            input.addEventListener('change', calculateTotal);
+        });
+
+        orderForm.onsubmit = async function(e) {
+            e.preventDefault();
+            const totalQty = parseInt(totalQtyEl.textContent);
+            if (totalQty === 0) {
+                alert("Please pick at least one cookie!");
+                return;
+            }
+            submitBtn.disabled = true;
+            submitBtn.innerText = "SENDING ORDER...";
+            statusMsg.innerText = "Connecting to the bakery...";
+            const formData = new FormData(orderForm);
+            try {
+                const response = await fetch(orderForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (response.ok) {
+                    formContainer.style.display = 'none';
+                    successScreen.style.display = 'block';
+                    window.scrollTo(0, 0);
+                } else {
+                    const data = await response.json();
+                    alert("Problem: " + (data.errors ? data.errors.map(e => e.message).join(', ') : "Error."));
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "SEND MY COOKIES!";
+                }
+            } catch (error) {
+                alert("Connection failed.");
+                submitBtn.disabled = false;
+                submitBtn.innerText = "SEND MY COOKIES!";
+            }
+        };
+    </script>
+</body>
+</html>
